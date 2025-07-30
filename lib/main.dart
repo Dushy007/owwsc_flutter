@@ -5,6 +5,7 @@ import 'package:owwsc_mock_responsive/bloc/appdrawer/appdrawer_event.dart';
 import 'package:owwsc_mock_responsive/bloc/auth/auth_bloc.dart';
 import 'package:owwsc_mock_responsive/bloc/home/home_bloc.dart';
 import 'package:owwsc_mock_responsive/bloc/home/home_event.dart';
+import 'package:owwsc_mock_responsive/bloc/home/most_used_services/most_used_services_bloc.dart';
 import 'package:owwsc_mock_responsive/core/navigation/app_router.dart';
 
 import 'bloc/onboarding/onboarding_bloc.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthBloc>(create: (context) => AuthBloc()),
         BlocProvider<OnboardingBloc>(create: (context) => OnboardingBloc()),
         BlocProvider<HomeBloc>(create: (context) => HomeBloc()..add(LoadUserDetailsEvent())),
+        BlocProvider<MostUsedServicesBloc>(create: (context) => MostUsedServicesBloc()),
         BlocProvider(create: (context) => AppDrawerBloc()..add(FetchAppDrawerDetails())),
       ],
       child: MaterialApp.router(

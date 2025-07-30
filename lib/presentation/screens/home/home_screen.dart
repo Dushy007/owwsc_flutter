@@ -3,11 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:owwsc_mock_responsive/bloc/home/home_bloc.dart';
 import 'package:owwsc_mock_responsive/bloc/home/home_state.dart';
+import 'package:owwsc_mock_responsive/bloc/home/most_used_services/most_used_services_bloc.dart';
+import 'package:owwsc_mock_responsive/bloc/home/most_used_services/most_used_services_event.dart';
+import 'package:owwsc_mock_responsive/bloc/home/most_used_services/most_used_services_state.dart';
 import 'package:owwsc_mock_responsive/core/responsive/responsive_utils.dart';
 import 'package:owwsc_mock_responsive/core/theme/app_theme.dart';
 import 'package:owwsc_mock_responsive/core/widgets/app_bar.dart';
 import 'package:owwsc_mock_responsive/core/widgets/app_drawer.dart';
 import 'package:owwsc_mock_responsive/core/widgets/responsive_text.dart';
+import 'package:owwsc_mock_responsive/data/datasources/local/local_storage_helper.dart';
 import 'package:shimmer/shimmer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,6 +24,20 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final double layoutHorizontalPadding = 10.0;
   String? username;
+  String? personType;
+  String? preferredLanguage;
+
+  @override
+  void initState() {
+    _loadLocalStorageData();
+    context.read<MostUsedServicesBloc>().add(LoadMostUsedServicesEvent(personType: personType ?? 'IND', preferredLanguage: preferredLanguage ?? 'AR'));
+    super.initState();
+  }
+
+  Future<void> _loadLocalStorageData() async {
+    personType =  await LocalStorageHelper.get('person_type');
+    preferredLanguage = await LocalStorageHelper.get('pref_lang');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,6 +164,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
+                    BlocBuilder<MostUsedServicesBloc, MostUsedServicesState>(builder: (context, state) {
+                      if(state is MostUsedServicesLoaded) {
+                        return Column(
+                        children: state.menuDataResponse.map((item) => Text(item.moduleName)).toList(),
+                      );
+                      } else {
+                        return Text("");
+                      }
+                    })
                   ],
                 ),
               ),

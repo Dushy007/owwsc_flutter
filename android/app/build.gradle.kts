@@ -5,11 +5,13 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+// Read ndk.version from local.properties
+val ndkVersionProp: String? = project.findProperty("ndk.version") as String?
+
 android {
     namespace = "com.example.owwsc_mock_responsive"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
-
+    ndkVersion = ndkVersionProp ?: flutter.ndkVersion
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11

@@ -128,8 +128,8 @@ class AppTheme {
     );
   }
 
-  static DialogTheme _buildDialogTheme() {
-    return DialogTheme(
+  static DialogThemeData _buildDialogTheme() {
+    return DialogThemeData(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(dialogBorderRadius)),
     );
   }
