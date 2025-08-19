@@ -1,8 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Location permissions for maps -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:label="owwsc_mock_responsive"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <!-- ADD YOUR ACTUAL API KEY HERE -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyArv4Qfupt603Tu8dn2dmSfhs20drgbF78"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

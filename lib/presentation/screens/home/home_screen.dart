@@ -100,14 +100,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           return Shimmer.fromColors(
                             baseColor: Colors.white.withOpacity(0.3),
                             highlightColor: Colors.white.withOpacity(0.7),
-                            child: Container(
-                              width: ResponsiveUtils.getResponsiveFontSize(context, 120),
-                              height: ResponsiveUtils.getResponsiveFontSize(context, 20),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(4),
+                              child: Container(
+                                width: ResponsiveUtils.getResponsiveFontSize(context, 120),
+                                height: ResponsiveUtils.getResponsiveFontSize(context, 20),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
                               ),
-                            ),
                           );
                         } else {
                           return ResponsiveText(

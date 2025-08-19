@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:owwsc_mock_responsive/core/widgets/google_map.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -11,7 +12,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("Dashboard")),
+      body: CustomGoogleMap(mandatory: true,),
     );
   }
 }
