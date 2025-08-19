@@ -39,6 +39,7 @@ class AppTheme {
       inputDecorationTheme: _buildInputDecorationTheme(false),
       checkboxTheme: _buildCheckboxTheme(false),
       dialogTheme: _buildDialogTheme(),
+      dividerTheme: _buildDividerTheme(),
     );
   }
 
@@ -136,6 +137,10 @@ class AppTheme {
 
   static AppBarTheme _buildAppBarTheme() {
     return AppBarTheme(backgroundColor: primaryColor);
+  }
+
+  static DividerThemeData _buildDividerTheme() {
+    return DividerThemeData(color: Color(0xffCECECE));
   }
 
   static TextTheme _buildTextTheme(bool isDark) {

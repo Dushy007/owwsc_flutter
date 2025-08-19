@@ -183,7 +183,7 @@ class AppDrawer extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: ListView.builder(
+                  child: ListView.separated(
                     itemCount: menuItems.length,
                     itemBuilder: (context, index) {
                       final menuItem = menuItems[index];
@@ -198,8 +198,14 @@ class AppDrawer extends StatelessWidget {
                           baseFontSize: 16,
                         ),
                         trailing: menuItem['trailingIcon'],
+                        visualDensity: VisualDensity(vertical: -4),
                       );
                     },
+                    separatorBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: const Divider(),
+                    ),
+                    physics: ClampingScrollPhysics(),
                   ),
                 ),
                 Container(
@@ -215,12 +221,12 @@ class AppDrawer extends StatelessWidget {
                     ),
                     title: ResponsiveText(
                       'Logout',
-                      baseFontSize: 18,
+                      baseFontSize: 16,
                       color: Colors.white,
                     ),
                     trailing: ResponsiveText(
                       "App Version 1.0.0",
-                      baseFontSize: 16,
+                      baseFontSize: 14,
                       color: Colors.white,
                     ),
                   ),
