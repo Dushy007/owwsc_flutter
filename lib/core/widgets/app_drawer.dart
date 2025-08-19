@@ -17,38 +17,93 @@ class AppDrawer extends StatelessWidget {
       "trailingIcon": LanguageSwitcher(),
       "route": null,
     },
-    {"leadingIcon": "assets/images/settings.svg", "title": "Settings", "trailingIcon": null},
-    {"leadingIcon": "assets/images/alarm.svg", "title": "Alarm", "trailingIcon": null},
-    {"leadingIcon": "assets/images/Saved Cards.svg", "title": "Saved Cards", "trailingIcon": null},
-    {"leadingIcon": "assets/images/Announcements.svg", "title": "Announcements", "trailingIcon": null},
-    {"leadingIcon": "assets/images/Disclaimer.svg", "title": "Disclaimer", "trailingIcon": null},
-    {"leadingIcon": "assets/images/Transaction History.svg", "title": "Transaction History", "trailingIcon": null},
-    {"leadingIcon": "assets/images/FAQ.svg", "title": "FAQ", "trailingIcon": null},
-    {"leadingIcon": "assets/images/About.svg", "title": "About Us", "trailingIcon": null},
-    {"leadingIcon": "assets/images/privacy-policy.svg", "title": "Privacy Policy", "trailingIcon": null},
-    {"leadingIcon": "assets/images/feedback.svg", "title": "Feedback", "trailingIcon": null},
+    {
+      "leadingIcon": "assets/images/settings.svg",
+      "title": "Settings",
+      "trailingIcon": null,
+    },
+    {
+      "leadingIcon": "assets/images/alarm.svg",
+      "title": "Alarm",
+      "trailingIcon": null,
+    },
+    {
+      "leadingIcon": "assets/images/Saved Cards.svg",
+      "title": "Saved Cards",
+      "trailingIcon": null,
+    },
+    {
+      "leadingIcon": "assets/images/Announcements.svg",
+      "title": "Announcements",
+      "trailingIcon": null,
+    },
+    {
+      "leadingIcon": "assets/images/Disclaimer.svg",
+      "title": "Disclaimer",
+      "trailingIcon": null,
+    },
+    {
+      "leadingIcon": "assets/images/Transaction History.svg",
+      "title": "Transaction History",
+      "trailingIcon": null,
+    },
+    {
+      "leadingIcon": "assets/images/FAQ.svg",
+      "title": "FAQ",
+      "trailingIcon": null,
+    },
+    {
+      "leadingIcon": "assets/images/About.svg",
+      "title": "About Us",
+      "trailingIcon": null,
+    },
+    {
+      "leadingIcon": "assets/images/privacy-policy.svg",
+      "title": "Privacy Policy",
+      "trailingIcon": null,
+    },
+    {
+      "leadingIcon": "assets/images/feedback.svg",
+      "title": "Feedback",
+      "trailingIcon": null,
+    },
     {"leadingIcon": null, "title": "Contact Us", "trailingIcon": null},
-    {"leadingIcon": "assets/images/share-the-app.svg", "title": "Share The App", "trailingIcon": null},
+    {
+      "leadingIcon": "assets/images/share-the-app.svg",
+      "title": "Share The App",
+      "trailingIcon": null,
+    },
   ];
 
-  Widget _getLeadingIcon(BuildContext context, String? iconPath, String title) {
+  Widget _getLeadingIcon(
+    BuildContext context, {
+    String? iconPath,
+    String? title,
+    Color? color,
+  }) {
     if (iconPath != null && iconPath.isNotEmpty) {
       if (iconPath.endsWith(".svg")) {
         return SvgPicture.asset(
-            iconPath, width: ResponsiveUtils.getResponsiveFontSize(context, 18),
-            height: ResponsiveUtils.getResponsiveFontSize(context, 18),
-            colorFilter: ColorFilter.mode(Theme.of(context).primaryColor, BlendMode.srcIn),
+          iconPath,
+          width: ResponsiveUtils.getResponsiveFontSize(context, 18),
+          height: ResponsiveUtils.getResponsiveFontSize(context, 18),
+          colorFilter: ColorFilter.mode(
+            color ?? Theme.of(context).primaryColor,
+            BlendMode.srcIn,
+          ),
         );
       } else {
         return Image.asset(
-            iconPath, width: ResponsiveUtils.getResponsiveFontSize(context, 18),
-            height: ResponsiveUtils.getResponsiveFontSize(context, 18),
-        color: Theme.of(context).primaryColor,);
+          iconPath,
+          width: ResponsiveUtils.getResponsiveFontSize(context, 18),
+          height: ResponsiveUtils.getResponsiveFontSize(context, 18),
+          color: color ?? Theme.of(context).primaryColor,
+        );
       }
     }
 
     // Fallback icons based on title
-    switch (title.toLowerCase()) {
+    switch (title?.toLowerCase()) {
       case 'settings':
         return Icon(Icons.settings);
       case 'alarm':
@@ -70,7 +125,7 @@ class AppDrawer extends StatelessWidget {
       case 'change language':
         return Icon(Icons.language);
       case 'contact us':
-        return Icon(Icons.phone, color: Theme.of(context).primaryColor,);
+        return Icon(Icons.phone, color: Theme.of(context).primaryColor);
       default:
         return Icon(Icons.arrow_forward_ios);
     }
@@ -133,14 +188,41 @@ class AppDrawer extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final menuItem = menuItems[index];
                       return ListTile(
-                        leading: _getLeadingIcon(context, menuItem['leadingIcon'], menuItem['title']),
+                        leading: _getLeadingIcon(
+                          context,
+                          iconPath: menuItem['leadingIcon'],
+                          title: menuItem['title'],
+                        ),
                         title: ResponsiveText(
                           menuItem['title'],
                           baseFontSize: 16,
                         ),
-                        trailing: menuItem['trailingIcon']
+                        trailing: menuItem['trailingIcon'],
                       );
                     },
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  child: ListTile(
+                    leading: _getLeadingIcon(
+                      context,
+                      iconPath: 'assets/images/logout.svg',
+                      color: Colors.white,
+                    ),
+                    title: ResponsiveText(
+                      'Logout',
+                      baseFontSize: 18,
+                      color: Colors.white,
+                    ),
+                    trailing: ResponsiveText(
+                      "App Version 1.0.0",
+                      baseFontSize: 16,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],
@@ -187,7 +269,10 @@ class _LanguageSwitcherState extends State<LanguageSwitcher> {
                 margin: const EdgeInsets.all(2),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: !isArabic ? Theme.of(context).primaryColor : Colors.green[200],
+                  color:
+                      !isArabic
+                          ? Theme.of(context).primaryColor
+                          : Colors.green[200],
                 ),
                 child: Center(
                   child: Text(
@@ -208,7 +293,10 @@ class _LanguageSwitcherState extends State<LanguageSwitcher> {
                 margin: const EdgeInsets.all(2),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: isArabic ? Colors.green[800] : Colors.green[200],
+                  color:
+                      isArabic
+                          ? Theme.of(context).primaryColor
+                          : Colors.green[200],
                 ),
                 child: Center(
                   child: Text(
