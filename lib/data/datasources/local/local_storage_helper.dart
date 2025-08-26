@@ -15,7 +15,9 @@ class LocalStorageHelper {
   static Future<void> set<T>(String key, T value) async {
     try {
       String valueToStore;
-      if (value is String) {
+      if (T == dynamic || value.runtimeType == dynamic) {
+        valueToStore = encryptAndEncode(value.toString());
+      } else if (value is String) {
         valueToStore = encryptAndEncode(value);
       } else if (value is int || value is double || value is bool) {
         valueToStore = encryptAndEncode(value.toString());
@@ -47,6 +49,14 @@ class LocalStorageHelper {
       if(encryptedValue == null) return null;
 
       final decryptedValue = decryptAndDecode(encryptedValue);
+
+      // Debug logging
+      print('Key: $key');
+      print('DecryptedValue: $decryptedValue');
+      print('T: $T');
+      print('T.runtimeType: ${T.runtimeType}');
+      print('T == String: ${T == String}');
+      print('T == int: ${T == int}');
 
       // Handle primitive types based on generic parameter T
       if (T == String) {

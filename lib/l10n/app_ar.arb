@@ -1,0 +1,18 @@
+{
+    "goodMorning": "صباح الخير",
+
+    "changeLanguage": "تغيير اللغة",
+    "settings": "الإعدادات",
+    "alarm" : "تنبيه تسريب المياه",
+    "savedCards": "حفظ بطاقة الدفع",
+    "announcements": "الإشعارات",
+    "disclaimer": "إخلاء المسؤولية",
+    "transactionHistory": "سجل السداد",
+    "faq": "أسئلة متكررة",
+    "aboutUs": "من نحن",
+    "privacyPolicy": "سياسة الخصوصية",
+    "feedBack" : "",
+    "contactUs": "",
+    "shareTheApp": "",
+    "logout": "تسجيل الخروج"
+}

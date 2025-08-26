@@ -35,8 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadLocalStorageData() async {
-    personType =  await LocalStorageHelper.get('person_type');
-    preferredLanguage = await LocalStorageHelper.get('pref_lang');
+    personType =  await LocalStorageHelper.get<String>('person_type');
+    preferredLanguage = await LocalStorageHelper.get<String>('pref_lang');
   }
 
   @override

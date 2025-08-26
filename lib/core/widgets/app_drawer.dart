@@ -4,76 +4,83 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:owwsc_mock_responsive/bloc/appdrawer/appdrawer_bloc.dart';
 import 'package:owwsc_mock_responsive/bloc/appdrawer/appdrawer_state.dart';
+import 'package:owwsc_mock_responsive/bloc/language/language_bloc.dart';
+import 'package:owwsc_mock_responsive/bloc/language/language_event.dart';
+import 'package:owwsc_mock_responsive/bloc/language/language_state.dart';
 import 'package:owwsc_mock_responsive/core/responsive/responsive_utils.dart';
 import 'package:owwsc_mock_responsive/core/widgets/responsive_text.dart';
+import 'package:owwsc_mock_responsive/l10n/app_localizations.dart';
 
 class AppDrawer extends StatelessWidget {
   AppDrawer({super.key});
 
-  final List<dynamic> menuItems = [
-    {
-      "leadingIcon": "assets/images/language.svg",
-      "title": "Change Language",
-      "trailingIcon": LanguageSwitcher(),
-      "route": null,
-    },
-    {
-      "leadingIcon": "assets/images/settings.svg",
-      "title": "Settings",
-      "trailingIcon": null,
-    },
-    {
-      "leadingIcon": "assets/images/alarm.svg",
-      "title": "Alarm",
-      "trailingIcon": null,
-    },
-    {
-      "leadingIcon": "assets/images/Saved Cards.svg",
-      "title": "Saved Cards",
-      "trailingIcon": null,
-    },
-    {
-      "leadingIcon": "assets/images/Announcements.svg",
-      "title": "Announcements",
-      "trailingIcon": null,
-    },
-    {
-      "leadingIcon": "assets/images/Disclaimer.svg",
-      "title": "Disclaimer",
-      "trailingIcon": null,
-    },
-    {
-      "leadingIcon": "assets/images/Transaction History.svg",
-      "title": "Transaction History",
-      "trailingIcon": null,
-    },
-    {
-      "leadingIcon": "assets/images/FAQ.svg",
-      "title": "FAQ",
-      "trailingIcon": null,
-    },
-    {
-      "leadingIcon": "assets/images/About.svg",
-      "title": "About Us",
-      "trailingIcon": null,
-    },
-    {
-      "leadingIcon": "assets/images/privacy-policy.svg",
-      "title": "Privacy Policy",
-      "trailingIcon": null,
-    },
-    {
-      "leadingIcon": "assets/images/feedback.svg",
-      "title": "Feedback",
-      "trailingIcon": null,
-    },
-    {"leadingIcon": null, "title": "Contact Us", "trailingIcon": null},
-    {
-      "leadingIcon": "assets/images/share-the-app.svg",
-      "title": "Share The App",
-      "trailingIcon": null,
-    },
-  ];
+  List<Map<String,dynamic>> _getMenuItems(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return [
+      {
+        "leadingIcon": "assets/images/language.svg",
+        "title": l10n.changeLanguage,
+        "trailingIcon": LanguageSwitcher(),
+        "route": null,
+      },
+      {
+        "leadingIcon": "assets/images/settings.svg",
+        "title": l10n.settings,
+        "trailingIcon": null,
+      },
+      {
+        "leadingIcon": "assets/images/alarm.svg",
+        "title": l10n.alarm,
+        "trailingIcon": null,
+      },
+      {
+        "leadingIcon": "assets/images/Saved Cards.svg",
+        "title": l10n.savedCards,
+        "trailingIcon": null,
+      },
+      {
+        "leadingIcon": "assets/images/Announcements.svg",
+        "title": l10n.announcements,
+        "trailingIcon": null,
+      },
+      {
+        "leadingIcon": "assets/images/Disclaimer.svg",
+        "title": l10n.disclaimer,
+        "trailingIcon": null,
+      },
+      {
+        "leadingIcon": "assets/images/Transaction History.svg",
+        "title": l10n.transactionHistory,
+        "trailingIcon": null,
+      },
+      {
+        "leadingIcon": "assets/images/FAQ.svg",
+        "title": l10n.faq,
+        "trailingIcon": null,
+      },
+      {
+        "leadingIcon": "assets/images/About.svg",
+        "title": l10n.aboutUs,
+        "trailingIcon": null,
+      },
+      {
+        "leadingIcon": "assets/images/privacy-policy.svg",
+        "title": "Privacy Policy",
+        "trailingIcon": null,
+      },
+      {
+        "leadingIcon": "assets/images/feedback.svg",
+        "title": "Feedback",
+        "trailingIcon": null,
+      },
+      {"leadingIcon": null, "title": "Contact Us", "trailingIcon": null},
+      {
+        "leadingIcon": "assets/images/share-the-app.svg",
+        "title": "Share The App",
+        "trailingIcon": null,
+      },
+    ];
+  }
 
   Widget _getLeadingIcon(
     BuildContext context, {
@@ -133,6 +140,7 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final menuItems = _getMenuItems(context);
     return SafeArea(
       child: BlocBuilder<AppDrawerBloc, AppDrawerState>(
         builder: (BuildContext context, AppDrawerState state) {
@@ -166,7 +174,7 @@ class AppDrawer extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             ResponsiveText(
-                              "Good morning,",
+                              AppLocalizations.of(context)!.goodMorning,
                               baseFontSize: 16,
                               color: Colors.white,
                             ),
@@ -220,7 +228,7 @@ class AppDrawer extends StatelessWidget {
                       color: Colors.white,
                     ),
                     title: ResponsiveText(
-                      'Logout',
+                      AppLocalizations.of(context)!.logout,
                       baseFontSize: 16,
                       color: Colors.white,
                     ),
@@ -240,85 +248,80 @@ class AppDrawer extends StatelessWidget {
   }
 }
 
-class LanguageSwitcher extends StatefulWidget {
-  const LanguageSwitcher({super.key});
 
-  @override
-  State<LanguageSwitcher> createState() => _LanguageSwitcherState();
-}
-
-class _LanguageSwitcherState extends State<LanguageSwitcher> {
-  bool isArabic = false; // false = English, true = Arabic
-
+class LanguageSwitcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          isArabic = !isArabic;
-        });
-      },
-      child: Container(
-        width: ResponsiveUtils.getResponsiveFontSize(context, 60),
-        height: ResponsiveUtils.getResponsiveFontSize(context, 30),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          border: Border.all(width: 1, color: Colors.black),
-          color: Colors.grey[200],
-        ),
-        child: Row(
-          children: [
-            // English Option
-            Expanded(
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                margin: const EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color:
-                      !isArabic
-                          ? Theme.of(context).primaryColor
-                          : Colors.green[200],
-                ),
-                child: Center(
-                  child: Text(
-                    'E',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
+    return BlocBuilder<LanguageBloc, LanguageState>(
+      builder: (context, state) {
+        final isArabic = state.locale.languageCode == 'ar';
+        return GestureDetector(
+        onTap: () {
+          context.read<LanguageBloc>().add(ChangeLanguageEvent(isArabic ? 'en' : 'ar'));
+        },
+        child: Container(
+          width: ResponsiveUtils.getResponsiveFontSize(context, 60),
+          height: ResponsiveUtils.getResponsiveFontSize(context, 30),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25),
+            border: Border.all(width: 1, color: Colors.black),
+            color: Colors.grey[200],
+          ),
+          child: Row(
+            children: [
+              // English Option
+              Expanded(
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  margin: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color:
+                        !isArabic
+                            ? Theme.of(context).primaryColor
+                            : Colors.green[200],
+                  ),
+                  child: Center(
+                    child: Text(
+                      'E',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            // Arabic Option
-            Expanded(
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                margin: const EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color:
-                      isArabic
-                          ? Theme.of(context).primaryColor
-                          : Colors.green[200],
-                ),
-                child: Center(
-                  child: Text(
-                    'ع',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
+              // Arabic Option
+              Expanded(
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  margin: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color:
+                        isArabic
+                            ? Theme.of(context).primaryColor
+                            : Colors.green[200],
+                  ),
+                  child: Center(
+                    child: Text(
+                      'ع',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+      );
+  }
     );
   }
 }

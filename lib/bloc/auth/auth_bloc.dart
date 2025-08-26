@@ -67,10 +67,29 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             emit(AuthError(message: message));
           } else {
             await LocalStorageHelper.set('token', userResponse.data!.token);
+            await LocalStorageHelper.set('user_id', userResponse.data!.userId);
             await LocalStorageHelper.set('username', userResponse.data!.userName);
             await LocalStorageHelper.set('email', userResponse.data!.emailId);
+            await LocalStorageHelper.set('email_or_mobile', userResponse.data!.emailId);
             await LocalStorageHelper.set('person_type', userResponse.data!.personType);
             await LocalStorageHelper.set('pref_lang', userResponse.data!.preferredLang);
+            await LocalStorageHelper.set('language', userResponse.data!.preferredLang);
+            await LocalStorageHelper.set('expiry_date', userResponse.data!.expiryDate);
+            await LocalStorageHelper.set('national_id', userResponse.data!.nationalId);
+            await LocalStorageHelper.set('cr_number', userResponse.data!.crNumber);
+            await LocalStorageHelper.set('sms_notification', userResponse.data!.isSmsNotification);
+            await LocalStorageHelper.set('email_notification', userResponse.data!.isEmailNotification);
+            await LocalStorageHelper.set('mobile_number', userResponse.data!.mobileNumber);
+            await LocalStorageHelper.set('email_changed', userResponse.data!.isEmailChanged);
+            await LocalStorageHelper.set('mobile_changed', userResponse.data!.isMobileChanged);
+            await LocalStorageHelper.set('email_verified', userResponse.data!.isEmailVerified);
+            await LocalStorageHelper.set('mobile_verified', userResponse.data!.isMobileVerified);
+            await LocalStorageHelper.set('alert_in_sms', userResponse.data!.isAlertInSms);
+            await LocalStorageHelper.set('alert_in_email', userResponse.data!.isAlertInEmail);
+            await LocalStorageHelper.set('alert_in_whatsapp', userResponse.data!.isAlertInWhatsapp);
+            await LocalStorageHelper.set('full_name_en', userResponse.data!.fullNameEn);
+            await LocalStorageHelper.set('full_name_ar', userResponse.data!.fullNameAr);
+
             emit(AuthAuthenticated(userResponse.data!));
           }
         } else {

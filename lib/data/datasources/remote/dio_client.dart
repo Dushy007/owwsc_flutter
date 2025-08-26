@@ -1,11 +1,16 @@
+import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flutter/foundation.dart';
 import 'package:owwsc_mock_responsive/data/datasources/remote/exceptions.dart';
 import 'package:owwsc_mock_responsive/data/datasources/remote/interceptors/logging_interceptor.dart';
+import 'package:path_provider/path_provider.dart';
 
 class DioClient {
   static DioClient? _instance;
   late Dio _dio;
+  CookieJar? _cookieJar;
+  bool _isInitialized = false;
 
   // Singleton pattern - recommended by Dio documentation
   factory DioClient() {
@@ -15,6 +20,42 @@ class DioClient {
   DioClient._internal() {
     _dio = Dio(_createBaseOptions());
     _setupInterceptors();
+  }
+
+  // Initialize cookie jar and add cookie manager
+  Future<void> _ensureInitialized() async {
+    if (_isInitialized) return;
+
+    await _initializeCookieJar();
+
+    // Remove existing cookie manager if any and add new one
+    _dio.interceptors.removeWhere((interceptor) => interceptor is CookieManager);
+    _dio.interceptors.insert(0, CookieManager(_cookieJar!));
+
+    _isInitialized = true;
+  }
+
+  Future<void> _initializeCookieJar() async {
+    try {
+      if (kIsWeb) {
+        // For web platform, use default cookie jar (browser handles cookies)
+        _cookieJar = CookieJar();
+      } else {
+        // For mobile/desktop platforms, use persistent cookie jar
+        final appDocDir = await getApplicationDocumentsDirectory();
+        final cookiePath = '${appDocDir.path}/.cookies/';
+        _cookieJar = PersistCookieJar(
+          ignoreExpires: false, // Respect cookie expiration
+          storage: FileStorage(cookiePath),
+        );
+      }
+    } catch (e) {
+      // Fallback to default cookie jar if path_provider fails
+      if (kDebugMode) {
+        print('Failed to initialize persistent cookies, using default: $e');
+      }
+      _cookieJar = CookieJar();
+    }
   }
 
   BaseOptions _createBaseOptions() {
@@ -50,6 +91,7 @@ class DioClient {
     Options? options,
     ProgressCallback? onSendProgress,
   }) async {
+    await _ensureInitialized();
     try {
       final formData = await _buildFormData(
         fields: fields,

@@ -1,0 +1,18 @@
+{
+  "goodMorning": "Good morning",
+
+  "changeLanguage": "Change Language",
+  "settings": "Settings",
+  "alarm" : "Alarm",
+  "savedCards": "Saved Cards",
+  "announcements": "Announcements",
+  "disclaimer": "Disclaimer",
+  "transactionHistory": "Transaction History",
+  "faq": "FAQ",
+  "aboutUs": "About Us",
+  "privacyPolicy": "Privacy Policy",
+  "feedBack" : "Feedback",
+  "contactUs": "Contact Us",
+  "shareTheApp": "Share The App",
+  "logout": "Logout"
+}
