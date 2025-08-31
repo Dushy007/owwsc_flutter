@@ -14,5 +14,9 @@
     "feedBack" : "",
     "contactUs": "",
     "shareTheApp": "",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+
+    "reportWaterLeak" : "الإبلاغ عن تسرب المياه",
+    "reportWastewaterOverflow": "",
+    "sewerOdorComplaint": "بلاغ عن روائح الصرف الصحي"
 }

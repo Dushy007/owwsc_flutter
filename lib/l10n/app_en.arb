@@ -14,5 +14,9 @@
   "feedBack" : "Feedback",
   "contactUs": "Contact Us",
   "shareTheApp": "Share The App",
-  "logout": "Logout"
+  "logout": "Logout",
+
+  "reportWaterLeak" : "Report a Water Leak",
+  "reportWastewaterOverflow": "Report Wastewater Overflow",
+  "sewerOdorComplaint": "Sewer Odor Complaint"
 }

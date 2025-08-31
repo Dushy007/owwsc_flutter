@@ -187,6 +187,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Logout'**
   String get logout;
+
+  /// No description provided for @reportWaterLeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Report a Water Leak'**
+  String get reportWaterLeak;
+
+  /// No description provided for @reportWastewaterOverflow.
+  ///
+  /// In en, this message translates to:
+  /// **'Report Wastewater Overflow'**
+  String get reportWastewaterOverflow;
+
+  /// No description provided for @sewerOdorComplaint.
+  ///
+  /// In en, this message translates to:
+  /// **'Sewer Odor Complaint'**
+  String get sewerOdorComplaint;
 }
 
 class _AppLocalizationsDelegate

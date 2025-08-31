@@ -52,4 +52,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logout => 'Logout';
+
+  @override
+  String get reportWaterLeak => 'Report a Water Leak';
+
+  @override
+  String get reportWastewaterOverflow => 'Report Wastewater Overflow';
+
+  @override
+  String get sewerOdorComplaint => 'Sewer Odor Complaint';
 }
