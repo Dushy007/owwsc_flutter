@@ -21,7 +21,7 @@ abstract class MenuItem with _$MenuItem {
     @JsonKey(name: 'Parent_Id') int? parentId,
     @JsonKey(name: 'Module_Name') required String moduleName,
     @JsonKey(name: 'Module_Name_Arabic') required String moduleNameArabic,
-    @JsonKey(name: 'Menu_Icon') required String menuIcon,
+    @JsonKey(name: 'Menu_Icon')  String? menuIcon,
     @JsonKey(name: 'Target_Url') required String targetUrl,
     @JsonKey(name: 'PersonTypeID') required int personTypeId,
     @JsonKey(name: 'PersonTypeCode') required String personTypeCode,

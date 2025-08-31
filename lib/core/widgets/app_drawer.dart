@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:owwsc_mock_responsive/bloc/appdrawer/appdrawer_bloc.dart';
@@ -14,7 +15,7 @@ import 'package:owwsc_mock_responsive/l10n/app_localizations.dart';
 class AppDrawer extends StatelessWidget {
   AppDrawer({super.key});
 
-  List<Map<String,dynamic>> _getMenuItems(BuildContext context) {
+  List<Map<String, dynamic>> _getMenuItems(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     return [
       {
@@ -209,10 +210,11 @@ class AppDrawer extends StatelessWidget {
                         visualDensity: VisualDensity(vertical: -4),
                       );
                     },
-                    separatorBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: const Divider(),
-                    ),
+                    separatorBuilder:
+                        (context, index) => Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          child: const Divider(),
+                        ),
                     physics: ClampingScrollPhysics(),
                   ),
                 ),
@@ -248,80 +250,93 @@ class AppDrawer extends StatelessWidget {
   }
 }
 
-
 class LanguageSwitcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LanguageBloc, LanguageState>(
       builder: (context, state) {
         final isArabic = state.locale.languageCode == 'ar';
+        final isLoading = state is LanguageLoading;
         return GestureDetector(
-        onTap: () {
-          context.read<LanguageBloc>().add(ChangeLanguageEvent(isArabic ? 'en' : 'ar'));
-        },
-        child: Container(
-          width: ResponsiveUtils.getResponsiveFontSize(context, 60),
-          height: ResponsiveUtils.getResponsiveFontSize(context, 30),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25),
-            border: Border.all(width: 1, color: Colors.black),
-            color: Colors.grey[200],
-          ),
-          child: Row(
-            children: [
-              // English Option
-              Expanded(
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  margin: const EdgeInsets.all(2),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color:
-                        !isArabic
-                            ? Theme.of(context).primaryColor
-                            : Colors.green[200],
-                  ),
-                  child: Center(
-                    child: Text(
-                      'E',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
+          onTap:
+              isLoading
+                  ? null
+                  : () {
+                    context.read<LanguageBloc>().add(
+                      ChangeLanguageEvent(isArabic ? 'en' : 'ar'),
+                    );
+                  },
+          child: Container(
+            width: 60,
+            height: 30,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25),
+              border: Border.all(width: 1, color: Colors.black),
+              color: Colors.grey[200],
+            ),
+            child:
+                isLoading
+                    ? Center(
+                      child: SpinKitThreeBounce(
+                        color: Theme.of(context).primaryColor,
+                        size: 16,
                       ),
+                    )
+                    : Row(
+                      children: [
+                        // English Option
+                        Expanded(
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            margin: const EdgeInsets.all(2),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color:
+                                  !isArabic
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.green[200],
+                            ),
+                            child: Center(
+                              child: Text(
+                                'E',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        // Arabic Option
+                        Expanded(
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            margin: const EdgeInsets.all(2),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color:
+                                  isArabic
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.green[200],
+                            ),
+                            child: Center(
+                              child: Text(
+                                'ع',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ),
-              ),
-              // Arabic Option
-              Expanded(
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  margin: const EdgeInsets.all(2),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color:
-                        isArabic
-                            ? Theme.of(context).primaryColor
-                            : Colors.green[200],
-                  ),
-                  child: Center(
-                    child: Text(
-                      'ع',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
           ),
-        ),
-      );
-  }
+        );
+      },
     );
   }
 }

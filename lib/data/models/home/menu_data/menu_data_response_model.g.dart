@@ -28,7 +28,7 @@ _MenuItem _$MenuItemFromJson(Map<String, dynamic> json) => _MenuItem(
   parentId: (json['Parent_Id'] as num?)?.toInt(),
   moduleName: json['Module_Name'] as String,
   moduleNameArabic: json['Module_Name_Arabic'] as String,
-  menuIcon: json['Menu_Icon'] as String,
+  menuIcon: json['Menu_Icon'] as String?,
   targetUrl: json['Target_Url'] as String,
   personTypeId: (json['PersonTypeID'] as num).toInt(),
   personTypeCode: json['PersonTypeCode'] as String,

@@ -290,7 +290,7 @@ as List<MenuItem>,
 /// @nodoc
 mixin _$MenuItem {
 
-@JsonKey(name: 'MenuId') int get menuId;@JsonKey(name: 'Parent_Id') int? get parentId;@JsonKey(name: 'Module_Name') String get moduleName;@JsonKey(name: 'Module_Name_Arabic') String get moduleNameArabic;@JsonKey(name: 'Menu_Icon') String get menuIcon;@JsonKey(name: 'Target_Url') String get targetUrl;@JsonKey(name: 'PersonTypeID') int get personTypeId;@JsonKey(name: 'PersonTypeCode') String get personTypeCode;@JsonKey(name: 'PTypeEngName') String get pTypeEngName;@JsonKey(name: 'PTypeArabName') String? get pTypeArabName;@JsonKey(name: 'isPrivate') bool? get isPrivate;@JsonKey(name: 'quickMenu') bool get quickMenu;@JsonKey(name: 'IsPrepaidServices') bool get isPrepaidServices;@JsonKey(name: 'BranchServiceEnablementFlag') int get branchServiceEnablementFlag;@JsonKey(name: 'BracnhServiceURL') String? get branchServiceUrl;
+@JsonKey(name: 'MenuId') int get menuId;@JsonKey(name: 'Parent_Id') int? get parentId;@JsonKey(name: 'Module_Name') String get moduleName;@JsonKey(name: 'Module_Name_Arabic') String get moduleNameArabic;@JsonKey(name: 'Menu_Icon') String? get menuIcon;@JsonKey(name: 'Target_Url') String get targetUrl;@JsonKey(name: 'PersonTypeID') int get personTypeId;@JsonKey(name: 'PersonTypeCode') String get personTypeCode;@JsonKey(name: 'PTypeEngName') String get pTypeEngName;@JsonKey(name: 'PTypeArabName') String? get pTypeArabName;@JsonKey(name: 'isPrivate') bool? get isPrivate;@JsonKey(name: 'quickMenu') bool get quickMenu;@JsonKey(name: 'IsPrepaidServices') bool get isPrepaidServices;@JsonKey(name: 'BranchServiceEnablementFlag') int get branchServiceEnablementFlag;@JsonKey(name: 'BracnhServiceURL') String? get branchServiceUrl;
 /// Create a copy of MenuItem
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -323,7 +323,7 @@ abstract mixin class $MenuItemCopyWith<$Res>  {
   factory $MenuItemCopyWith(MenuItem value, $Res Function(MenuItem) _then) = _$MenuItemCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'MenuId') int menuId,@JsonKey(name: 'Parent_Id') int? parentId,@JsonKey(name: 'Module_Name') String moduleName,@JsonKey(name: 'Module_Name_Arabic') String moduleNameArabic,@JsonKey(name: 'Menu_Icon') String menuIcon,@JsonKey(name: 'Target_Url') String targetUrl,@JsonKey(name: 'PersonTypeID') int personTypeId,@JsonKey(name: 'PersonTypeCode') String personTypeCode,@JsonKey(name: 'PTypeEngName') String pTypeEngName,@JsonKey(name: 'PTypeArabName') String? pTypeArabName,@JsonKey(name: 'isPrivate') bool? isPrivate,@JsonKey(name: 'quickMenu') bool quickMenu,@JsonKey(name: 'IsPrepaidServices') bool isPrepaidServices,@JsonKey(name: 'BranchServiceEnablementFlag') int branchServiceEnablementFlag,@JsonKey(name: 'BracnhServiceURL') String? branchServiceUrl
+@JsonKey(name: 'MenuId') int menuId,@JsonKey(name: 'Parent_Id') int? parentId,@JsonKey(name: 'Module_Name') String moduleName,@JsonKey(name: 'Module_Name_Arabic') String moduleNameArabic,@JsonKey(name: 'Menu_Icon') String? menuIcon,@JsonKey(name: 'Target_Url') String targetUrl,@JsonKey(name: 'PersonTypeID') int personTypeId,@JsonKey(name: 'PersonTypeCode') String personTypeCode,@JsonKey(name: 'PTypeEngName') String pTypeEngName,@JsonKey(name: 'PTypeArabName') String? pTypeArabName,@JsonKey(name: 'isPrivate') bool? isPrivate,@JsonKey(name: 'quickMenu') bool quickMenu,@JsonKey(name: 'IsPrepaidServices') bool isPrepaidServices,@JsonKey(name: 'BranchServiceEnablementFlag') int branchServiceEnablementFlag,@JsonKey(name: 'BracnhServiceURL') String? branchServiceUrl
 });
 
 
@@ -340,14 +340,14 @@ class _$MenuItemCopyWithImpl<$Res>
 
 /// Create a copy of MenuItem
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? menuId = null,Object? parentId = freezed,Object? moduleName = null,Object? moduleNameArabic = null,Object? menuIcon = null,Object? targetUrl = null,Object? personTypeId = null,Object? personTypeCode = null,Object? pTypeEngName = null,Object? pTypeArabName = freezed,Object? isPrivate = freezed,Object? quickMenu = null,Object? isPrepaidServices = null,Object? branchServiceEnablementFlag = null,Object? branchServiceUrl = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? menuId = null,Object? parentId = freezed,Object? moduleName = null,Object? moduleNameArabic = null,Object? menuIcon = freezed,Object? targetUrl = null,Object? personTypeId = null,Object? personTypeCode = null,Object? pTypeEngName = null,Object? pTypeArabName = freezed,Object? isPrivate = freezed,Object? quickMenu = null,Object? isPrepaidServices = null,Object? branchServiceEnablementFlag = null,Object? branchServiceUrl = freezed,}) {
   return _then(_self.copyWith(
 menuId: null == menuId ? _self.menuId : menuId // ignore: cast_nullable_to_non_nullable
 as int,parentId: freezed == parentId ? _self.parentId : parentId // ignore: cast_nullable_to_non_nullable
 as int?,moduleName: null == moduleName ? _self.moduleName : moduleName // ignore: cast_nullable_to_non_nullable
 as String,moduleNameArabic: null == moduleNameArabic ? _self.moduleNameArabic : moduleNameArabic // ignore: cast_nullable_to_non_nullable
-as String,menuIcon: null == menuIcon ? _self.menuIcon : menuIcon // ignore: cast_nullable_to_non_nullable
-as String,targetUrl: null == targetUrl ? _self.targetUrl : targetUrl // ignore: cast_nullable_to_non_nullable
+as String,menuIcon: freezed == menuIcon ? _self.menuIcon : menuIcon // ignore: cast_nullable_to_non_nullable
+as String?,targetUrl: null == targetUrl ? _self.targetUrl : targetUrl // ignore: cast_nullable_to_non_nullable
 as String,personTypeId: null == personTypeId ? _self.personTypeId : personTypeId // ignore: cast_nullable_to_non_nullable
 as int,personTypeCode: null == personTypeCode ? _self.personTypeCode : personTypeCode // ignore: cast_nullable_to_non_nullable
 as String,pTypeEngName: null == pTypeEngName ? _self.pTypeEngName : pTypeEngName // ignore: cast_nullable_to_non_nullable
@@ -442,7 +442,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'MenuId')  int menuId, @JsonKey(name: 'Parent_Id')  int? parentId, @JsonKey(name: 'Module_Name')  String moduleName, @JsonKey(name: 'Module_Name_Arabic')  String moduleNameArabic, @JsonKey(name: 'Menu_Icon')  String menuIcon, @JsonKey(name: 'Target_Url')  String targetUrl, @JsonKey(name: 'PersonTypeID')  int personTypeId, @JsonKey(name: 'PersonTypeCode')  String personTypeCode, @JsonKey(name: 'PTypeEngName')  String pTypeEngName, @JsonKey(name: 'PTypeArabName')  String? pTypeArabName, @JsonKey(name: 'isPrivate')  bool? isPrivate, @JsonKey(name: 'quickMenu')  bool quickMenu, @JsonKey(name: 'IsPrepaidServices')  bool isPrepaidServices, @JsonKey(name: 'BranchServiceEnablementFlag')  int branchServiceEnablementFlag, @JsonKey(name: 'BracnhServiceURL')  String? branchServiceUrl)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'MenuId')  int menuId, @JsonKey(name: 'Parent_Id')  int? parentId, @JsonKey(name: 'Module_Name')  String moduleName, @JsonKey(name: 'Module_Name_Arabic')  String moduleNameArabic, @JsonKey(name: 'Menu_Icon')  String? menuIcon, @JsonKey(name: 'Target_Url')  String targetUrl, @JsonKey(name: 'PersonTypeID')  int personTypeId, @JsonKey(name: 'PersonTypeCode')  String personTypeCode, @JsonKey(name: 'PTypeEngName')  String pTypeEngName, @JsonKey(name: 'PTypeArabName')  String? pTypeArabName, @JsonKey(name: 'isPrivate')  bool? isPrivate, @JsonKey(name: 'quickMenu')  bool quickMenu, @JsonKey(name: 'IsPrepaidServices')  bool isPrepaidServices, @JsonKey(name: 'BranchServiceEnablementFlag')  int branchServiceEnablementFlag, @JsonKey(name: 'BracnhServiceURL')  String? branchServiceUrl)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MenuItem() when $default != null:
 return $default(_that.menuId,_that.parentId,_that.moduleName,_that.moduleNameArabic,_that.menuIcon,_that.targetUrl,_that.personTypeId,_that.personTypeCode,_that.pTypeEngName,_that.pTypeArabName,_that.isPrivate,_that.quickMenu,_that.isPrepaidServices,_that.branchServiceEnablementFlag,_that.branchServiceUrl);case _:
@@ -463,7 +463,7 @@ return $default(_that.menuId,_that.parentId,_that.moduleName,_that.moduleNameAra
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'MenuId')  int menuId, @JsonKey(name: 'Parent_Id')  int? parentId, @JsonKey(name: 'Module_Name')  String moduleName, @JsonKey(name: 'Module_Name_Arabic')  String moduleNameArabic, @JsonKey(name: 'Menu_Icon')  String menuIcon, @JsonKey(name: 'Target_Url')  String targetUrl, @JsonKey(name: 'PersonTypeID')  int personTypeId, @JsonKey(name: 'PersonTypeCode')  String personTypeCode, @JsonKey(name: 'PTypeEngName')  String pTypeEngName, @JsonKey(name: 'PTypeArabName')  String? pTypeArabName, @JsonKey(name: 'isPrivate')  bool? isPrivate, @JsonKey(name: 'quickMenu')  bool quickMenu, @JsonKey(name: 'IsPrepaidServices')  bool isPrepaidServices, @JsonKey(name: 'BranchServiceEnablementFlag')  int branchServiceEnablementFlag, @JsonKey(name: 'BracnhServiceURL')  String? branchServiceUrl)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'MenuId')  int menuId, @JsonKey(name: 'Parent_Id')  int? parentId, @JsonKey(name: 'Module_Name')  String moduleName, @JsonKey(name: 'Module_Name_Arabic')  String moduleNameArabic, @JsonKey(name: 'Menu_Icon')  String? menuIcon, @JsonKey(name: 'Target_Url')  String targetUrl, @JsonKey(name: 'PersonTypeID')  int personTypeId, @JsonKey(name: 'PersonTypeCode')  String personTypeCode, @JsonKey(name: 'PTypeEngName')  String pTypeEngName, @JsonKey(name: 'PTypeArabName')  String? pTypeArabName, @JsonKey(name: 'isPrivate')  bool? isPrivate, @JsonKey(name: 'quickMenu')  bool quickMenu, @JsonKey(name: 'IsPrepaidServices')  bool isPrepaidServices, @JsonKey(name: 'BranchServiceEnablementFlag')  int branchServiceEnablementFlag, @JsonKey(name: 'BracnhServiceURL')  String? branchServiceUrl)  $default,) {final _that = this;
 switch (_that) {
 case _MenuItem():
 return $default(_that.menuId,_that.parentId,_that.moduleName,_that.moduleNameArabic,_that.menuIcon,_that.targetUrl,_that.personTypeId,_that.personTypeCode,_that.pTypeEngName,_that.pTypeArabName,_that.isPrivate,_that.quickMenu,_that.isPrepaidServices,_that.branchServiceEnablementFlag,_that.branchServiceUrl);case _:
@@ -483,7 +483,7 @@ return $default(_that.menuId,_that.parentId,_that.moduleName,_that.moduleNameAra
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'MenuId')  int menuId, @JsonKey(name: 'Parent_Id')  int? parentId, @JsonKey(name: 'Module_Name')  String moduleName, @JsonKey(name: 'Module_Name_Arabic')  String moduleNameArabic, @JsonKey(name: 'Menu_Icon')  String menuIcon, @JsonKey(name: 'Target_Url')  String targetUrl, @JsonKey(name: 'PersonTypeID')  int personTypeId, @JsonKey(name: 'PersonTypeCode')  String personTypeCode, @JsonKey(name: 'PTypeEngName')  String pTypeEngName, @JsonKey(name: 'PTypeArabName')  String? pTypeArabName, @JsonKey(name: 'isPrivate')  bool? isPrivate, @JsonKey(name: 'quickMenu')  bool quickMenu, @JsonKey(name: 'IsPrepaidServices')  bool isPrepaidServices, @JsonKey(name: 'BranchServiceEnablementFlag')  int branchServiceEnablementFlag, @JsonKey(name: 'BracnhServiceURL')  String? branchServiceUrl)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'MenuId')  int menuId, @JsonKey(name: 'Parent_Id')  int? parentId, @JsonKey(name: 'Module_Name')  String moduleName, @JsonKey(name: 'Module_Name_Arabic')  String moduleNameArabic, @JsonKey(name: 'Menu_Icon')  String? menuIcon, @JsonKey(name: 'Target_Url')  String targetUrl, @JsonKey(name: 'PersonTypeID')  int personTypeId, @JsonKey(name: 'PersonTypeCode')  String personTypeCode, @JsonKey(name: 'PTypeEngName')  String pTypeEngName, @JsonKey(name: 'PTypeArabName')  String? pTypeArabName, @JsonKey(name: 'isPrivate')  bool? isPrivate, @JsonKey(name: 'quickMenu')  bool quickMenu, @JsonKey(name: 'IsPrepaidServices')  bool isPrepaidServices, @JsonKey(name: 'BranchServiceEnablementFlag')  int branchServiceEnablementFlag, @JsonKey(name: 'BracnhServiceURL')  String? branchServiceUrl)?  $default,) {final _that = this;
 switch (_that) {
 case _MenuItem() when $default != null:
 return $default(_that.menuId,_that.parentId,_that.moduleName,_that.moduleNameArabic,_that.menuIcon,_that.targetUrl,_that.personTypeId,_that.personTypeCode,_that.pTypeEngName,_that.pTypeArabName,_that.isPrivate,_that.quickMenu,_that.isPrepaidServices,_that.branchServiceEnablementFlag,_that.branchServiceUrl);case _:
@@ -498,14 +498,14 @@ return $default(_that.menuId,_that.parentId,_that.moduleName,_that.moduleNameAra
 @JsonSerializable()
 
 class _MenuItem implements MenuItem {
-  const _MenuItem({@JsonKey(name: 'MenuId') required this.menuId, @JsonKey(name: 'Parent_Id') this.parentId, @JsonKey(name: 'Module_Name') required this.moduleName, @JsonKey(name: 'Module_Name_Arabic') required this.moduleNameArabic, @JsonKey(name: 'Menu_Icon') required this.menuIcon, @JsonKey(name: 'Target_Url') required this.targetUrl, @JsonKey(name: 'PersonTypeID') required this.personTypeId, @JsonKey(name: 'PersonTypeCode') required this.personTypeCode, @JsonKey(name: 'PTypeEngName') required this.pTypeEngName, @JsonKey(name: 'PTypeArabName') this.pTypeArabName, @JsonKey(name: 'isPrivate') this.isPrivate, @JsonKey(name: 'quickMenu') required this.quickMenu, @JsonKey(name: 'IsPrepaidServices') required this.isPrepaidServices, @JsonKey(name: 'BranchServiceEnablementFlag') required this.branchServiceEnablementFlag, @JsonKey(name: 'BracnhServiceURL') this.branchServiceUrl});
+  const _MenuItem({@JsonKey(name: 'MenuId') required this.menuId, @JsonKey(name: 'Parent_Id') this.parentId, @JsonKey(name: 'Module_Name') required this.moduleName, @JsonKey(name: 'Module_Name_Arabic') required this.moduleNameArabic, @JsonKey(name: 'Menu_Icon') this.menuIcon, @JsonKey(name: 'Target_Url') required this.targetUrl, @JsonKey(name: 'PersonTypeID') required this.personTypeId, @JsonKey(name: 'PersonTypeCode') required this.personTypeCode, @JsonKey(name: 'PTypeEngName') required this.pTypeEngName, @JsonKey(name: 'PTypeArabName') this.pTypeArabName, @JsonKey(name: 'isPrivate') this.isPrivate, @JsonKey(name: 'quickMenu') required this.quickMenu, @JsonKey(name: 'IsPrepaidServices') required this.isPrepaidServices, @JsonKey(name: 'BranchServiceEnablementFlag') required this.branchServiceEnablementFlag, @JsonKey(name: 'BracnhServiceURL') this.branchServiceUrl});
   factory _MenuItem.fromJson(Map<String, dynamic> json) => _$MenuItemFromJson(json);
 
 @override@JsonKey(name: 'MenuId') final  int menuId;
 @override@JsonKey(name: 'Parent_Id') final  int? parentId;
 @override@JsonKey(name: 'Module_Name') final  String moduleName;
 @override@JsonKey(name: 'Module_Name_Arabic') final  String moduleNameArabic;
-@override@JsonKey(name: 'Menu_Icon') final  String menuIcon;
+@override@JsonKey(name: 'Menu_Icon') final  String? menuIcon;
 @override@JsonKey(name: 'Target_Url') final  String targetUrl;
 @override@JsonKey(name: 'PersonTypeID') final  int personTypeId;
 @override@JsonKey(name: 'PersonTypeCode') final  String personTypeCode;
@@ -550,7 +550,7 @@ abstract mixin class _$MenuItemCopyWith<$Res> implements $MenuItemCopyWith<$Res>
   factory _$MenuItemCopyWith(_MenuItem value, $Res Function(_MenuItem) _then) = __$MenuItemCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'MenuId') int menuId,@JsonKey(name: 'Parent_Id') int? parentId,@JsonKey(name: 'Module_Name') String moduleName,@JsonKey(name: 'Module_Name_Arabic') String moduleNameArabic,@JsonKey(name: 'Menu_Icon') String menuIcon,@JsonKey(name: 'Target_Url') String targetUrl,@JsonKey(name: 'PersonTypeID') int personTypeId,@JsonKey(name: 'PersonTypeCode') String personTypeCode,@JsonKey(name: 'PTypeEngName') String pTypeEngName,@JsonKey(name: 'PTypeArabName') String? pTypeArabName,@JsonKey(name: 'isPrivate') bool? isPrivate,@JsonKey(name: 'quickMenu') bool quickMenu,@JsonKey(name: 'IsPrepaidServices') bool isPrepaidServices,@JsonKey(name: 'BranchServiceEnablementFlag') int branchServiceEnablementFlag,@JsonKey(name: 'BracnhServiceURL') String? branchServiceUrl
+@JsonKey(name: 'MenuId') int menuId,@JsonKey(name: 'Parent_Id') int? parentId,@JsonKey(name: 'Module_Name') String moduleName,@JsonKey(name: 'Module_Name_Arabic') String moduleNameArabic,@JsonKey(name: 'Menu_Icon') String? menuIcon,@JsonKey(name: 'Target_Url') String targetUrl,@JsonKey(name: 'PersonTypeID') int personTypeId,@JsonKey(name: 'PersonTypeCode') String personTypeCode,@JsonKey(name: 'PTypeEngName') String pTypeEngName,@JsonKey(name: 'PTypeArabName') String? pTypeArabName,@JsonKey(name: 'isPrivate') bool? isPrivate,@JsonKey(name: 'quickMenu') bool quickMenu,@JsonKey(name: 'IsPrepaidServices') bool isPrepaidServices,@JsonKey(name: 'BranchServiceEnablementFlag') int branchServiceEnablementFlag,@JsonKey(name: 'BracnhServiceURL') String? branchServiceUrl
 });
 
 
@@ -567,14 +567,14 @@ class __$MenuItemCopyWithImpl<$Res>
 
 /// Create a copy of MenuItem
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? menuId = null,Object? parentId = freezed,Object? moduleName = null,Object? moduleNameArabic = null,Object? menuIcon = null,Object? targetUrl = null,Object? personTypeId = null,Object? personTypeCode = null,Object? pTypeEngName = null,Object? pTypeArabName = freezed,Object? isPrivate = freezed,Object? quickMenu = null,Object? isPrepaidServices = null,Object? branchServiceEnablementFlag = null,Object? branchServiceUrl = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? menuId = null,Object? parentId = freezed,Object? moduleName = null,Object? moduleNameArabic = null,Object? menuIcon = freezed,Object? targetUrl = null,Object? personTypeId = null,Object? personTypeCode = null,Object? pTypeEngName = null,Object? pTypeArabName = freezed,Object? isPrivate = freezed,Object? quickMenu = null,Object? isPrepaidServices = null,Object? branchServiceEnablementFlag = null,Object? branchServiceUrl = freezed,}) {
   return _then(_MenuItem(
 menuId: null == menuId ? _self.menuId : menuId // ignore: cast_nullable_to_non_nullable
 as int,parentId: freezed == parentId ? _self.parentId : parentId // ignore: cast_nullable_to_non_nullable
 as int?,moduleName: null == moduleName ? _self.moduleName : moduleName // ignore: cast_nullable_to_non_nullable
 as String,moduleNameArabic: null == moduleNameArabic ? _self.moduleNameArabic : moduleNameArabic // ignore: cast_nullable_to_non_nullable
-as String,menuIcon: null == menuIcon ? _self.menuIcon : menuIcon // ignore: cast_nullable_to_non_nullable
-as String,targetUrl: null == targetUrl ? _self.targetUrl : targetUrl // ignore: cast_nullable_to_non_nullable
+as String,menuIcon: freezed == menuIcon ? _self.menuIcon : menuIcon // ignore: cast_nullable_to_non_nullable
+as String?,targetUrl: null == targetUrl ? _self.targetUrl : targetUrl // ignore: cast_nullable_to_non_nullable
 as String,personTypeId: null == personTypeId ? _self.personTypeId : personTypeId // ignore: cast_nullable_to_non_nullable
 as int,personTypeCode: null == personTypeCode ? _self.personTypeCode : personTypeCode // ignore: cast_nullable_to_non_nullable
 as String,pTypeEngName: null == pTypeEngName ? _self.pTypeEngName : pTypeEngName // ignore: cast_nullable_to_non_nullable

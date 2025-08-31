@@ -98,8 +98,9 @@ class _LoginScreenState extends State<LoginScreen> {
           }
         },
         child: SafeArea(
-          child: ResponsiveContainer(
-            child: SingleChildScrollView(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -108,17 +109,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     // Logo
                     Image.asset(
                       'assets/images/nama_logo.png',
-                      height: ResponsiveUtils.getResponsiveFontSize(
-                        context,
-                        64,
-                      ),
+                      height:70
                     ),
 
                     SizedBox(
-                      height: ResponsiveUtils.getResponsiveSpacing(
-                        context,
+                      height:
                         AppConstants.spacingL,
-                      ),
                     ),
 
                     // ResponsiveText(
@@ -139,20 +135,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     //   textAlign: TextAlign.center,
                     // ),
                     SizedBox(
-                      height: ResponsiveUtils.getResponsiveSpacing(
-                        context,
+                      height:
                         AppConstants.spacingXL,
-                      ),
                     ),
 
                     // Login form
-                    Container(
-                      constraints: BoxConstraints(
-                        maxWidth:
-                            ResponsiveUtils.isDesktop(context)
-                                ? 400
-                                : double.infinity,
-                      ),
+                    SizedBox(
+                      width: double.infinity,
                       child: Column(
                         children: [
                           TextFormField(

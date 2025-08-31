@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 import 'package:owwsc_mock_responsive/core/constants/api_constants.dart';
 import 'package:owwsc_mock_responsive/core/utils/encrypt_decrypt.dart';
 import 'package:owwsc_mock_responsive/data/datasources/local/local_storage_helper.dart';
@@ -53,6 +54,24 @@ class LanguageService {
     final fullNameEn =  await LocalStorageHelper.get<String>('full_name_en');
     final fullNameAr =  await LocalStorageHelper.get<String>('full_name_ar');
 
+    String convertDate(String? dateString) {
+      if(dateString == null || dateString.isEmpty) {
+        return "";
+      }
+
+      // Define input format
+      DateFormat inputFormat = DateFormat('dd-MM-yyyy');
+
+      // Parse the date
+      DateTime parsedDate = inputFormat.parse(dateString);
+
+      // Define output format
+      DateFormat outputFormat = DateFormat('yyyy-MM-dd');
+
+      // Return formatted date
+      return outputFormat.format(parsedDate);
+    }
+
     try {
       final response = await _client.post(
         ApiConstants.updateUserProfile,
@@ -68,7 +87,7 @@ class LanguageService {
           'ProfilePic': '',
           'NationalID': nationalId,
           'CRNumber': crNumber,
-          'ExpiryDate': expiryDate,
+          'ExpiryDate': convertDate(expiryDate ?? ""),
           'IsSMSNTF': isSmsNtf,
           'IsEmailNTF': isEmailNtf,
           'EmailID': encryptAndEncode(emailId ?? ""),

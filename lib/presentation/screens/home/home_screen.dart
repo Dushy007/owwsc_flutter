@@ -139,35 +139,37 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   children: [
                     /// Service cards
-                    Row(
-                      children: [
-                        Expanded(
-                          child: ServiceCard(
-                            title: "Report a Water Leak",
-                            icon: "assets/images/leakage.svg",
-                            color: Theme.of(context).primaryColor,
+                    IntrinsicHeight(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: ServiceCard(
+                              title: "Report a Water Leak",
+                              icon: "assets/images/leakage.svg",
+                              color: Theme.of(context).primaryColor,
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          child: ServiceCard(
-                            title: "Top Up / Pay Bills",
-                            icon: "assets/images/bill-payment.svg",
-                            color: Theme.of(context).primaryColor,
+                          Expanded(
+                            child: ServiceCard(
+                              title: "Report Waste Water Overflow",
+                              icon: "assets/images/bill-payment.svg",
+                              color: Theme.of(context).primaryColor,
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          child: ServiceCard(
-                            title: "Appointment Booking",
-                            icon: "assets/images/nama-booking.svg",
-                            color: Theme.of(context).primaryColor,
+                          Expanded(
+                            child: ServiceCard(
+                              title: "Sewer Odor Complaint",
+                              icon: "assets/images/nama-booking.svg",
+                              color: Theme.of(context).primaryColor,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     BlocBuilder<MostUsedServicesBloc, MostUsedServicesState>(builder: (context, state) {
                       if(state is MostUsedServicesLoaded) {
                         return Column(
-                        children: state.menuDataResponse.map((item) => Text(item.moduleName)).toList(),
+                        children: state.menuDataResponse.map((item) => Text(item.moduleName,style: TextStyle(color: Colors.amberAccent),)).toList(),
                       );
                       } else {
                         return Text("");
@@ -201,17 +203,12 @@ class ServiceCard extends StatelessWidget {
           children: [
             SvgPicture.asset(
               icon,
-              height: ResponsiveUtils.getResponsiveFontSize(context, 30),
-              width: ResponsiveUtils.getResponsiveFontSize(context, 30),
+              height: 25,
+              width:25,
               colorFilter:  ColorFilter.mode(color, BlendMode.srcIn) ,
             ),
-            SizedBox(height: ResponsiveUtils.getResponsiveSpacing(context, 10)),
-            ResponsiveText(
-              title,
-              baseFontSize: 13,
-              textAlign: TextAlign.center,
-              color: context.customColors.primaryTextColor,
-            ),
+            SizedBox(height:10),
+            Text(title, textAlign: TextAlign.center,style: TextStyle(fontSize: 12, color:context.customColors.primaryTextColor ),)
           ],
         ),
       ),
